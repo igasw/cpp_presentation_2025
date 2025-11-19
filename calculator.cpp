@@ -158,6 +158,8 @@ void Calculator::operatorClicked()
         return;
     }
 
+    QString currentOperandText = mainDisplay->text();
+
     // There was an operator set already,- calculate intermediate value (based on pending operator) and display it
     if (!pendingOperator.isEmpty())
     {
@@ -195,7 +197,7 @@ void Calculator::operatorClicked()
     waitingForOperand = true;
 
     // Update history display
-    historyDisplay->setText(historyDisplay->text() + mainDisplay->text() + pendingOperator);
+    historyDisplay->setText(historyDisplay->text() + currentOperandText + pendingOperator);
 }
 
 void Calculator::equalClicked()
