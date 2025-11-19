@@ -18,6 +18,8 @@ The core purpose is to illustrate the setup and use of key Qt components, includ
 
 The core logic is contained within the `Calculator` class, which manages the UI setup and the calculator's operational state.
 
+Equation is being solved in the order of input, this overrides the natural order of performing actions.
+
 ### 1. User Interface Setup
 
 The constructor sets up the layout:
