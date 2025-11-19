@@ -5,28 +5,28 @@ project(SimpleCalculator LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Włączenie automatycznej obsługi MOC (Meta-Object Compiler) dla Qt
+# Enable automatic MOC (Meta-Object Compiler) handling for Qt
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-# Znajdowanie pakietu Qt6 (moduł Widgets)
+# Find the Qt6 package (Widgets module)
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 
-# Definicja plików źródłowych
+# Definition of source files
 set(PROJECT_SOURCES
     main.cpp
     calculator.cpp
     calculator.h
 )
 
-# Tworzenie pliku wykonywalnego
+# Create the executable file
 add_executable(SimpleCalculator ${PROJECT_SOURCES})
 
-# Linkowanie bibliotek Qt
+# Link Qt libraries
 target_link_libraries(SimpleCalculator PRIVATE Qt6::Widgets)
 
-# Obsługa Windows (ukrycie konsoli przy uruchamianiu)
+# Windows-specific handling (hide console when launching)
 if(WIN32)
     set_property(TARGET SimpleCalculator PROPERTY WIN32_EXECUTABLE ON)
 endif()
