@@ -10,19 +10,20 @@ Calculator::Calculator(QWidget *parent)
     setFixedSize(320, 450); // Setting the size of the window
 
     // Creating the displays
+    setStyleSheet("background-color: #F0F0F0;");
 
     // Equation display
     historyDisplay = new QLineEdit;
     historyDisplay->setReadOnly(true);
     historyDisplay->setAlignment(Qt::AlignRight);
     historyDisplay->setMinimumHeight(25);
-    historyDisplay->setStyleSheet("font-size: 14px; color: #555; background: #eee; border: none;");
+    historyDisplay->setStyleSheet("font-size: 14px; color: #333333; background: #F0F0F0; border: none;");
 
     // Main display - last clicked value or solution
     mainDisplay = new QLineEdit("0");
     mainDisplay->setReadOnly(true);
     mainDisplay->setAlignment(Qt::AlignRight);
-    mainDisplay->setStyleSheet("font-size: 32px; padding: 10px; background: #f0f0f0; border: 1px solid #ccc;");
+    mainDisplay->setStyleSheet("font-size: 32px; padding: 10px; background: white; border: 1px solid #ccc;");
 
     // Grid for buttons
     QGridLayout *gridLayout = new QGridLayout;
@@ -72,7 +73,18 @@ QPushButton *Calculator::createButton(const QString &text, const char *member)
 {
     QPushButton *btn = new QPushButton(text); // Set "text"
     btn->setMinimumSize(40, 40);
-    btn->setStyleSheet("font-size: 18px; font-weight: bold;");
+    btn->setStyleSheet(
+        "QPushButton {"
+        "   font-size: 18px; "
+        "   font-weight: bold; "
+        "   background-color: #D0D0D0; " // Button color
+        "   color: #333333; " // Button text color
+        "   border: 1px solid #C0C0C0; "
+        "   border-radius: 4px;"
+        "}"
+        "QPushButton:pressed {"
+        "   background-color: #A0A0A0;" // Button pressed color
+        "}");
     connect(btn, SIGNAL(clicked()), this, member); // (interactive part) makes sure the "member" will be called on every click
     return btn;
 }
